@@ -3,6 +3,7 @@ import Heading from "../ui/Heading";
 import Subtext from "../ui/Subtext";
 import ProfileImage from "../ui/ProfileImage";
 import ActionButtons from "../ui/ActionButtons";
+import { Pencil } from "lucide-react";
 
 export default function HeroSection() {
   return (
@@ -13,7 +14,7 @@ export default function HeroSection() {
         {/* Left Section */}
         <div className="space-y-8 md:space-y-10 pr-0 md:pr-8">
           <button className="w-10 h-10 bg-white/10 backdrop-blur-md rounded-xl flex items-center justify-center hover:bg-white/20 transition">
-            ✏️
+            <Pencil className="h-4 w-4" />
           </button>
 
           <Heading text="John Doe" />

@@ -7,7 +7,10 @@ import { Pencil } from "lucide-react";
 
 export default function HeroSection() {
   return (
-    <section className="w-full min-h-screen flex items-center justify-center py-16 md:py-24 px-6 bg-violet-600 text-white">
+    <section
+      className="w-full min-h-screen flex items-center justify-center py-16 md:py-24 px-6 bg-gradient-to-r from-black via-violet-600 to-blue-600 text-white"
+      style={{ backgroundImage: 'linear-gradient(to right, #000000, #7c3aed, #2563eb)' }}
+    >
 
       <div className="max-w-6xl w-full grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
 

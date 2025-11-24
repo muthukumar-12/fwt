@@ -17,7 +17,7 @@ export default function HeroSection() {
             <Pencil className="h-4 w-4" />
           </button>
 
-          <Heading text="John Doe" />
+          <Heading text="Prasanth" />
 
           <h2 contentEditable className="text-lg md:text-xl lg:text-2xl font-semibold opacity-95 leading-tight outline-none">
             Full Stack Developer & UI/UX Designer

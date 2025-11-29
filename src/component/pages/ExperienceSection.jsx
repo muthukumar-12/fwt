@@ -5,7 +5,7 @@ import { Pencil } from "lucide-react";
 
 export default function ExperienceSection() {
   return (
-    <section className="bg-gray-100 w-full py-20 px-6 md:px-20">
+    <section className="bg-gray-100 w-full py-16 px-4 md:px-20">
       {/* Title + Edit Button */}
       <div className="flex justify-between items-center mb-10">
         <h2 className="text-4xl font-bold">Experience</h2>
@@ -16,15 +16,11 @@ export default function ExperienceSection() {
       </div>
 
       {/* Timeline Layout */}
-      <div className="relative grid grid-cols-1 md:grid-cols-3 gap-y-20">
-        <div></div>
+      <div className="relative">
+        {/* center vertical line */}
+        <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 top-4 bottom-4 w-[2px] bg-gray-300" />
 
-        {/* Center Line */}
-        <div className="hidden md:flex flex-col items-center">
-          <div className="w-[2px] h-full bg-gray-300"></div>
-        </div>
-
-        <div></div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-y-4 md:gap-y-4">
 
         {/* Experience Items */}
         {experienceData.map((item, index) => (
@@ -35,8 +31,8 @@ export default function ExperienceSection() {
             </div>
 
             {/* Middle Dot */}
-            <div className="hidden md:flex justify-center">
-              <div className="w-4 h-4 bg-blue-600 rounded-full"></div>
+            <div className="hidden md:flex justify-center items-center">
+              <div className="w-4 h-4 bg-blue-600 rounded-full z-30 ring-4 ring-white/50 shadow-sm"></div>
             </div>
 
             {/* Right Item */}
@@ -45,6 +41,7 @@ export default function ExperienceSection() {
             </div>
           </React.Fragment>
         ))}
+        </div>
       </div>
     </section>
   );

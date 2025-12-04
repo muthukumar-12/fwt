@@ -1,7 +1,7 @@
- import {HeroSection} from "./component/pages/HeroSection.jsx";
- import Footer from "./component/layout/Footer.jsx";  
- import {ExperienceSection} from "./component/pages/ExperienceSection.jsx";
- import {Projectssection} from "./component/pages/Projectssection.jsx"; 
+import {HeroSection} from "./component/pages/HeroSection.jsx";
+import Footer from "./component/layout/Footer.jsx";  
+import {ExperienceSection} from "./component/pages/ExperienceSection.jsx";
+import {Projectssection} from "./component/pages/Projectssection.jsx"; 
 import {AwardsSection} from "./component/pages/AwardsSection.jsx";
 import {AchievementsGrid } from "./component/pages/AchievementsGrid.jsx";
 import {BooksGrid} from "./component/pages/BooksGrid.jsx";

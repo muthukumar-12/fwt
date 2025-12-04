@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Button from "../ui/Button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../ui/Card";
-import { Input } from "../ui/input";
+import { Input } from "../ui/Input";
 import { TextArea } from "../ui/TextArea";
 import { Label } from "../ui/Label";
 import { Calendar, Clock, Mail, User } from "lucide-react";

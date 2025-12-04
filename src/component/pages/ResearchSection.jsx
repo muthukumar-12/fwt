@@ -60,7 +60,7 @@ export const ResearchSection = () => {
               variant="ghost"
               size="icon"
               onClick={() => setIsEditing(!isEditing)}
-              className="mb-4 bg-white/10 hover:bg-white/20"
+               
             >
               <Pencil className="h-4 w-4" />
             </Button>
@@ -68,7 +68,7 @@ export const ResearchSection = () => {
               <Button
                 variant="default"
                 size="sm"
-                className="ml-2 bg-blue-600 text-white hover:bg-blue-700"
+                 
                 onClick={addResearch}
               >
                 <Plus className="h-4 w-4 mr-2" />Add Research

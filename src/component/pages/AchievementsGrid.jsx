@@ -58,7 +58,7 @@ export const AchievementsGrid = () => {
               variant="ghost"
               size="icon"
               onClick={() => setIsEditing(!isEditing)}
-              className="rounded-lg bg-blue-500 border-blue-300 hover:bg-blue-500 "
+               
             >
               <Pencil className="h-4 w-4" />
             </Button>
@@ -67,7 +67,7 @@ export const AchievementsGrid = () => {
               <Button
               variant="default"
                 size="sm"
-                className="bg-primary text-white rounded-lg hover:bg-primary/90"
+                 
                 onClick={addAchievement}
               >
                 <Plus className="h-4 w-4 mr-2" /> Add

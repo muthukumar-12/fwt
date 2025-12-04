@@ -43,8 +43,8 @@ module.exports = {
           foreground: "#6b7280",
         },
         accent: {
-          DEFAULT: "#f59e0b",
-          foreground: "#111827",
+          DEFAULT: "#7c3aed",
+          foreground: "#ffffff",
         },
         violetPrimary: {
           DEFAULT: "#7c3aed",     // violet-600
@@ -69,8 +69,8 @@ module.exports = {
           foreground: "#f9fafb",
           primary: "#3b82f6",
           "primary-foreground": "#ffffff",
-          accent: "#f59e0b",
-          "accent-foreground": "#111827",
+          accent: "#7c3aed",
+          "accent-foreground": "#ffffff",
           border: "#374151",
           ring: "#2563eb",
         },

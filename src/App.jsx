@@ -1,27 +1,30 @@
+ import {HeroSection} from "./component/pages/HeroSection.jsx";
+ import Footer from "./component/layout/Footer.jsx";  
+ import {ExperienceSection} from "./component/pages/ExperienceSection.jsx";
+ import {Projectssection} from "./component/pages/Projectssection.jsx"; 
+ import {ResearchSection} from "./component/pages/ResearchSection.jsx";
+import {AwardsSection} from "./component/pages/AwardsSection.jsx";
+import {AchievementsGrid } from "./component/pages/AchievementsGrid.jsx";
+import {BooksGrid} from "./component/pages/BooksGrid.jsx";
+import { AppointmentsSection } from "./component/pages/AppointmentsSection.jsx";
+ 
 
-import './App.css'
-import { increament, decreament, reset } from "./store/Counterslice";
-import { useDispatch, useSelector } from "react-redux";
-
-function App() {
-
-
-
-  const count = useSelector((state) => state.counter.value);
-  const dispatch = useDispatch();
-
-  return (
-    <>
-      <div className="bg-pink-700 justify-center flex shadow-md">
-        <h1> Count: {count} </h1>
-        <button onClick={() => dispatch(increament())}> + </button>
-        <button onClick={() => dispatch(decreament())}>  -</button>
-        <button onClick={() => dispatch(reset())}> reset </button>
-      </div>
-
-
-    </>
-  )
+ 
+ function App() {
+ return (
+    
+    <div className="min-h-screen">
+      <HeroSection />
+      <ExperienceSection />
+      <Projectssection />
+      <ResearchSection />
+      <AwardsSection />
+      <AchievementsGrid />
+      <BooksGrid />
+      <AppointmentsSection/>
+      <Footer />
+    </div>
+  );
 }
 
-export default App
+export default App;

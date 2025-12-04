@@ -1,96 +1,118 @@
-import React, { useState } from "react";
-import Card from "../ui/Card";
-import Button from "../ui/Button";
-import {projectsdata as initialData}  from "../data/projectsdata";
+import { useState } from "react";
+import Button  from "../ui/Button";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../ui/Card";
+import { Badge } from "../ui/Badge";
 import { Pencil, Plus, Trash2, ExternalLink, Github } from "lucide-react";
 
-const Projectssection = () => {
+export const Projectssection = () => {
   const [isEditing, setIsEditing] = useState(false);
-  const [projects, setProjects] = useState(initialData);
+  const [projects, setProjects] = useState([
+    {
+      id: "1",
+      title: "Business Expansion Plan",
+      description: "Developed a strategy to expand into new markets, resulting in a 30% increase in revenue.",
+      image: "https://images.unsplash.com/photo-1557821552-17105176677c?w=600&h=400&fit=crop",
+      tags: ["Business", "Strategy"],
+      liveUrl: "#",
+      githubUrl: "#"
+    },
+    {
+      id: "2",
+      title: "Community Fundraiser",
+      description: "Organized a local fundraiser event, raising $10,000 for charity.",
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop",
+      tags: ["Event", "Community"],
+      liveUrl: "#",
+      githubUrl: "#"
+    },
+    {
+      id: "3",
+      title: "Marketing Campaign",
+      description: "Led a marketing campaign that increased brand awareness by 50%.",
+      image: "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=600&h=400&fit=crop",
+      tags: ["Marketing", "Branding"],
+      liveUrl: "#",
+      githubUrl: "#"
+    },
+    {
+      id: "4",
+      title: "E-Commerce Platform",
+      description: "A full-stack e-commerce solution with payment integration and admin dashboard.",
+      image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&fit=crop",
+      tags: ["React", "Node.js", "MongoDB"],
+      liveUrl: "#",
+      githubUrl: "#"
+    }
+  ]);
 
-  // Add new project
   const addProject = () => {
     const newProject = {
       id: Date.now().toString(),
       title: "New Project",
       description: "Project description goes here.",
-      image:
-        "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&fit=crop",
+      image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=600&h=400&fit=crop",
       tags: ["Tag1", "Tag2"],
       liveUrl: "#",
-      githubUrl: "#",
+      githubUrl: "#"
     };
     setProjects([...projects, newProject]);
   };
 
-  // Delete project
   const deleteProject = (id) => {
-    setProjects(projects.filter((p) => p.id !== id));
+    setProjects(projects.filter(proj => proj.id !== id));
   };
 
-  // Update project field
   const updateProject = (id, field, value) => {
-    setProjects(
-      projects.map((p) => (p.id === id ? { ...p, [field]: value } : p))
-    );
+    setProjects(projects.map(proj =>
+      proj.id === id ? { ...proj, [field]: value } : proj
+    ));
   };
 
   return (
     <section className="py-20 bg-muted/30">
       <div className="container mx-auto px-4">
-        
-        {/* Header */}
         <div className="flex justify-between items-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground">
-            Projects
-          </h2>
-
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground">Projects</h2>
           <div className="flex gap-2">
             <Button
               variant="ghost"
               size="icon"
               onClick={() => setIsEditing(!isEditing)}
-              className="bg-white/10 hover:bg-white/20"
             >
               <Pencil className="h-4 w-4" />
             </Button>
-
             {isEditing && (
               <Button
                 variant="default"
+                size="sm"
                 onClick={addProject}
-                className="bg-blue-600 text-white hover:bg-blue-700"
               >
-                <Plus className="h-4 w-4 mr-2" />
-                Add Project
+                <Plus className="h-4 w-4 mr-2" /> Add Project
               </Button>
             )}
           </div>
         </div>
 
-        {/* GRID */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project) => (
             <Card key={project.id} className="overflow-hidden hover-lift group">
-
-              {/* IMAGE */}
               <div className="relative h-48 overflow-hidden">
                 {isEditing ? (
-                  <label className="absolute inset-0 flex items-center justify-center bg-black/60 text-white cursor-pointer">
+                  <label className="absolute inset-0 flex items-center justify-center cursor-pointer bg-black text-white">
                     <input
                       type="file"
                       accept="image/*"
-                      className="hidden"
                       onChange={(e) => {
                         const file = e.target.files?.[0];
-                        if (!file) return;
-                        const reader = new FileReader();
-                        reader.onload = () =>
-                          updateProject(project.id, "image", reader.result);
-                        reader.readAsDataURL(file);
+                        if (file) {
+                          const reader = new FileReader();
+                          reader.onload = () => updateProject(project.id, "image", reader.result);
+                          reader.readAsDataURL(file);
+                        }
                       }}
+                      className="hidden"
                     />
-                    <span className="font-semibold px-4 py-2 bg-black/80 rounded">
+                    <span className="text-white font-semibold px-6 py-3 rounded bg-black bg-opacity-90 border border-white/20 shadow-lg">
                       Upload Image
                     </span>
                   </label>
@@ -102,97 +124,71 @@ const Projectssection = () => {
                   />
                 )}
 
-                {/* DELETE BUTTON */}
                 {isEditing && (
                   <Button
                     variant="destructive"
                     size="icon"
-                    className="absolute top-2 right-2"
                     onClick={() => deleteProject(project.id)}
+                    className="absolute top-2 right-2"
                   >
                     <Trash2 className="h-4 w-4" />
                   </Button>
                 )}
               </div>
 
-              {/* TITLE */}
-              <div className="p-4 border-b border-border">
+              <CardHeader>
                 {isEditing ? (
                   <input
                     type="text"
                     value={project.title}
-                    onChange={(e) =>
-                      updateProject(project.id, "title", e.target.value)
-                    }
-                    className="w-full bg-transparent border-b border-border focus:border-primary outline-none text-xl font-bold"
+                    onChange={(e) => updateProject(project.id, "title", e.target.value)}
+                    className="text-xl font-bold bg-transparent border-b border-border focus:outline-none focus:border-primary w-full"
                   />
                 ) : (
-                  <h3 className="text-xl font-bold">{project.title}</h3>
+                  <CardTitle>{project.title}</CardTitle>
                 )}
-              </div>
+              </CardHeader>
 
-              {/* DESCRIPTION + TAGS */}
-              <div className="p-4">
+              <CardContent>
                 {isEditing ? (
                   <textarea
                     value={project.description}
-                    onChange={(e) =>
-                      updateProject(project.id, "description", e.target.value)
-                    }
+                    onChange={(e) => updateProject(project.id, "description", e.target.value)}
+                    className="w-full bg-transparent border border-border focus:outline-none focus:border-primary p-2 rounded resize-none"
                     rows={3}
-                    className="w-full bg-transparent border border-border p-2 rounded outline-none focus:border-primary"
                   />
                 ) : (
-                  <p className="text-sm text-muted-foreground">
-                    {project.description}
-                  </p>
+                  <CardDescription>{project.description}</CardDescription>
                 )}
 
-                {/* TAGS */}
-                <div className="mt-4 flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2 mt-4">
                   {isEditing ? (
                     <input
                       type="text"
                       value={project.tags.join(", ")}
-                      onChange={(e) =>
-                        updateProject(
-                          project.id,
-                          "tags",
-                          e.target.value.split(",").map((t) => t.trim())
-                        )
-                      }
-                      className="w-full bg-transparent border border-border p-2 rounded text-sm outline-none focus:border-primary"
+                      onChange={(e) => updateProject(project.id, "tags", e.target.value.split(",").map(t => t.trim()))}
+                      placeholder="Tags (comma separated)"
+                      className="w-full bg-transparent border border-border focus:outline-none focus:border-primary p-2 rounded text-sm"
                     />
                   ) : (
-                    project.tags.map((tag, i) => (
-                      <span
-                        key={i}
-                        className="px-3 py-1 text-xs bg-secondary text-secondary-foreground rounded-full"
-                      >
-                        {tag}
-                      </span>
+                    project.tags.map((tag, idx) => (
+                      <Badge key={idx} variant="secondary">{tag}</Badge>
                     ))
                   )}
                 </div>
-              </div>
+              </CardContent>
 
-              {/* FOOTER BUTTONS */}
               {!isEditing && (
-                <div className="p-4 border-t border-border flex gap-2">
-                  <Button asChild variant="outline" className="flex-1">
-                    <a href={project.liveUrl} target="_blank">
-                      <ExternalLink className="h-4 w-4 mr-2 inline-block" />
-                      Live Demo
-                    </a>
+                <CardFooter className="gap-2">
+                  <Button variant="outline" size="sm" className="flex-1">
+                    <ExternalLink className="h-4 w-4 mr-2" />
+                    Live Demo
                   </Button>
-
-                  <Button asChild variant="outline" className="flex-1">
-                    <a href={project.githubUrl} target="_blank">
-                      <Github className="h-4 w-4 mr-2 inline-block" />
-                      Code
-                    </a>
+                  <Button variant="outline" size="sm" className="flex-1">
+                    <Github className="h-4 w-4 mr-2" />
+                    Code
                   </Button>
-                </div>
+                </CardFooter>
               )}
             </Card>
           ))}
@@ -201,5 +197,3 @@ const Projectssection = () => {
     </section>
   );
 };
-
-export default Projectssection;

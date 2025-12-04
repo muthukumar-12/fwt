@@ -1,0 +1,19 @@
+import React from "react";
+
+export const Label = ({ htmlFor, children, className = "", ...props }) => {
+  return (
+    <label
+      htmlFor={htmlFor}
+      className={`
+        text-sm font-medium leading-none
+        peer-disabled:cursor-not-allowed 
+        peer-disabled:opacity-70
+        flex items-center gap-2
+        ${className}
+      `}
+      {...props}
+    >
+      {children}
+    </label>
+  );
+};

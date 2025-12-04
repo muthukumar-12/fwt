@@ -5,8 +5,8 @@ import { Pencil } from "lucide-react";
 export const HeroSection = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [heroData, setHeroData] = useState({
-    name: "John Doe",
-    title: "Full Stack Developer & UI/UX Designer",
+    name: "Prasanth S",
+    title: "Full Stack Developer ",
     description: "Passionate about creating beautiful, functional, and user-centered digital experiences.",
     imageUrl: "#"
   });
@@ -17,7 +17,7 @@ export const HeroSection = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center gradient-hero overflow-hidden">
-      {/* Animated background elements */}
+      {/* Animated BG*/}
       <div className="absolute inset-0 opacity-20">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary-glow rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent rounded-full blur-3xl animate-pulse delay-1000"></div>
@@ -25,7 +25,7 @@ export const HeroSection = () => {
 
       <div className="container mx-auto px-4 relative z-10">
         <div className="flex flex-col md:flex-row items-center justify-between gap-12">
-          {/* Text Content */}
+          {/* Content */}
           <div className="flex-1 text-white space-y-6 animate-fade-in">
             <Button
               variant="default"
